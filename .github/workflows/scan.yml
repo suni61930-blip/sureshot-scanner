@@ -1,0 +1,22 @@
+name: Sureshot Scanner
+on:
+  schedule:
+    - cron: '05 4 * * 1-5'   # 09:35 IST = 04:05 UTC Mon-Fri
+    - cron: '35 4 * * 1-5'   # 10:05 IST
+    - cron: '0 6 * * 1-5'    # 11:30 IST
+    - cron: '0 8 * * 1-5'    # 13:30 IST
+  workflow_dispatch:  # lets you run manually
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python telegram_pro.py
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
