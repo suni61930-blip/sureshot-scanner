@@ -1,9 +1,12 @@
 
 import requests
 from datetime import datetime
+import os
+BOT_TOKEN = os.getenv("BOT_TOKEN", "8871104656:AAGFT-aNaX5u5LhKdyEof6i9pQUAoWGlrLA")
+CHAT_ID = os.getenv("CHAT_ID", "1914750448")
 
-BOT_TOKEN = "8871104656:AAGFT-aNaX5u5LhKdyEof6i9pQUAoWGlrLA"
-CHAT_ID = "1914750448" # e.g. @your_sureshot_channel or your numeric id
+#BOT_TOKEN = "8871104656:AAGFT-aNaX5u5LhKdyEof6i9pQUAoWGlrLA"
+#CHAT_ID = "1914750448" # e.g. @your_sureshot_channel or your numeric id
 
 def push_sureshots(stocks, avoided):
     if not BOT_TOKEN.startswith("YOUR") and stocks:
